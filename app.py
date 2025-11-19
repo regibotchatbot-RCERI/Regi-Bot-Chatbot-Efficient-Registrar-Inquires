@@ -469,4 +469,6 @@ if __name__ == '__main__':
     print("--------------------------------------------------")
     print("            Starting Flask Web Server            ")
     print("--------------------------------------------------")
-    app.run(debug=True, threaded=False)
+    
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=False)
