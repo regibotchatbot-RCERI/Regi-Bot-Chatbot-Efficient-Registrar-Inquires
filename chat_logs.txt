@@ -1,0 +1,45 @@
+USER: hi
+BOT: Hello! Kumusta? Ano ang maitutulong ko?
+
+USER: Saan makikita ang Registrar’s Office?
+BOT: Ang Registrar's Office ay matatagpuan sa 2nd Floor, Main Building. Maaari kang mag-email sa registrar@sampleuniversity.edu.ph.
+
+USER: Ano ang mga requirements sa enrollment?
+BOT: Ang enrollment period para sa susunod na semestre ay magsisimula sa [Insert Date]. Para sa kumpletong detalye sa mga requirements, bisitahin ang official website ng TMLCR.
+
+USER: Paano kumuha ng Form 137?
+BOT: Sa pagkuha ng Form 137, magtungo sa Registar's Office at humingi ng Request Letter. Dalhin at ibigay ang request letter sa iyong dating paaralan
+
+USER: Kailan pwede magpa-encode ng grades?
+BOT: Para mag-verify ng grades, makipag-ugnayan sa iyong college dean o sa Registrar's Office.
+
+USER: Paano kumuha ng student ID?
+BOT: Paumanhin, hindi ko maintindihan ang iyong tanong.
+
+USER: Sino ang pwedeng lapitan kung mali ang grades ko?
+BOT: Para mag-verify ng grades, makipag-ugnayan sa iyong college dean o sa Registrar's Office.
+
+USER: Ano ang mga course na offered ng school?
+BOT: BS in Criminology, BS in Computer Science, Bachelor in Elementary Education, Bachelor in Secondary Educations Majors (English, Filipino, Mathematics), BS in Business Administration Majors (Financial Management, Marketing Management, Human Resource Management)
+
+USER: Paano mag-shift ng course?
+BOT: Hello! Kumusta? Ano ang maitutulong ko?
+
+USER: Anong oras bukas ang registrar?
+BOT: Ang Registrar's Office ay matatagpuan sa 2nd Floor, Main Building. Maaari kang mag-email sa registrar@sampleuniversity.edu.ph.
+
+USER: What time does the office open?
+BOT: I'm sorry, I didn't understand your question.
+
+USER: hi
+BOT: Hello! Kumusta? Ano ang maitutulong ko?
+
+USER: hello
+BOT: Hello! Kumusta? Ano ang maitutulong ko?
+
+USER: hi
+BOT: Hello! Kumusta? Ano ang maitutulong ko?
+
+USER: kamusta
+BOT: Hello! Kumusta? Ano ang maitutulong ko?
+

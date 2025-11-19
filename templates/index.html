@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMLCR RegiBot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="header-left">
+                <!-- ✅ Make sure this image is in your /static folder -->
+                <img src="{{ url_for('static', filename='TMLCR-logo.jpg') }}" alt="TMLCR Logo" class="logo">
+                <div class="header-info">
+                    <span class="bot-name">REGI-BOT</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-messages" id="chat-messages"></div>
+
+        <div class="chat-input-container">
+            <input type="text" id="user-input" class="chat-input" placeholder="Type a message...">
+            <button id="send-btn" class="send-btn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            function adjustChatHeight() {
+                const vh = window.innerHeight * 0.9; // 90% of screen height
+                $('.chat-container').css('height', vh + 'px');
+            }
+
+            adjustChatHeight();
+            $(window).on('resize orientationchange', adjustChatHeight);
+
+            function appendMessage(sender, message) {
+                const chatMessages = $('#chat-messages');
+                const messageClass = sender === 'user' ? 'user-message' : 'bot-message';
+                const messageHtml = `<div class="message ${messageClass}"><div class="message-text">${message}</div></div>`;
+                chatMessages.append(messageHtml);
+                chatMessages.scrollTop(chatMessages.prop('scrollHeight'));
+            }
+
+            function sendMessage() {
+                const userInput = $('#user-input');
+                const userMessage = userInput.val().trim();
+                if (userMessage === '') return;
+
+                appendMessage('user', userMessage);
+                userInput.val('');
+
+                $.ajax({
+                    url: '/api/chat',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ message: userMessage }),
+                    success: function(response) {
+                        appendMessage('bot', response.response);
+                    },
+                    error: function() {
+                        appendMessage('bot', 'Paumanhin, nagkaroon ng problema. Subukang muli.');
+                    }
+                });
+            }
+
+            $('#send-btn').click(sendMessage);
+            $('#user-input').keypress(function(e) {
+                if (e.which === 13) sendMessage();
+            });
+        });
+    </script>
+</body>
+</html>

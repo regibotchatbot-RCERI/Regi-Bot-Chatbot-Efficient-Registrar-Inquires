@@ -1,0 +1,10 @@
+REGI-BOT_Project/
+|
+|-- app.py
+|-- kmp_matcher.py
+|
+|-- templates/
+|   |-- index.html     <--- Dapat nandito ang index.html
+|
+|-- static/
+|   |-- style.css      <--- Dapat nandito ang style.css
