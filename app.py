@@ -11,8 +11,7 @@ import time
 import re
 from thefuzz import fuzz, process
 from sentence_transformers import SentenceTransformer, util
-from dotenv import load_dotenv
-import numpy as np
+
 
 
 # ============================================================
@@ -20,14 +19,14 @@ import numpy as np
 # ============================================================
 app = Flask(__name__)
 
-# ==================== LOAD ENV ====================
-load_dotenv()
-GOOGLE_SHEET_ID = os.getenv("GOOGLE_SHEET_ID")
-CREDENTIALS_FILE_PATH = os.getenv("GOOGLE_CREDENTIALS_FILE")
-USE_GOOGLE_SHEETS = os.getenv("USE_GOOGLE_SHEETS", "True") == "True"
-EXCEL_FILE_PATH = os.getenv("EXCEL_FILE_PATH", "knowledge_base.xlsx")
-
-IS_RENDER = os.getenv("RENDER", "0") == "1"
+# ============================================================
+# CONFIGURATION SETTINGS
+# ============================================================
+# Set to True to use Google sheets and False to use local excel
+USE_GOOGLE_SHEETS = True
+EXCEL_FILE_PATH = 'knowledge_base.xlsx'
+GOOGLE_SHEET_ID = '1s9b7NxElpvwcOCNDo5MDEM71y8jNO3AP9YjpEVtH-wY'
+CREDENTIALS_FILE_PATH = 'regibotchatbottt-d6d73a936c1a.json'
 
 # ============================================================
 # GLOBAL VARIABLES
@@ -205,13 +204,10 @@ def auto_reload_worker():
             print("Auto reload error:", e)
         time.sleep(2)
 
-        if not IS_RENDER:
-        # start auto-reload thread only in local/dev environments
-            reload_thread = threading.Thread(target=auto_reload_worker, daemon=True)
-            reload_thread.start()
-        else:
-            print("⚠️ Auto-reload thread disabled on Render (RENDER=1) to save memory.")
 
+# Start background thread
+reload_thread = threading.Thread(target=auto_reload_worker, daemon=True)
+reload_thread.start()
 
 
 # ============================================================
@@ -476,6 +472,4 @@ if __name__ == '__main__':
     print("--------------------------------------------------")
     print("            Starting Flask Web Server            ")
     print("--------------------------------------------------")
-
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port, debug=False)
+    app.run(debug=True, threaded=False)
